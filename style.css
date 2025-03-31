@@ -1,0 +1,35 @@
+body {
+    background-color: rgb(1, 19, 1);
+}
+
+
+span {
+    font-family: consolas;
+    font-size: 2em;
+    color: rgb(20,160,12);
+    padding: 30px;
+    padding-top: 30px;
+}
+span:after {
+    content:"_";
+    opacity: 0;
+    animation: cursor 1s infinite;
+}
+@keyframes cursor {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+/* styling */
+body {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}

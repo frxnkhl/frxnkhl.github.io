@@ -1,14 +1,13 @@
 body {
-    background-color: rgb(1, 19, 1);
+    background-color: rgb(10, 10, 10);
 }
 
 
 span {
-    font-family: consolas;
+    font-family: "Cascadia Mono";
     font-size: 2em;
     color: rgb(20,160,12);
-    padding: 30px;
-    padding-top: 30px;
+    padding: 10px;
 }
 span:after {
     content:"_";
@@ -19,11 +18,32 @@ span:after {
     0% {
         opacity: 0;
     }
+    10% {
+        opacity: 0;
+    }
+    20% {
+        opacity: 0;
+    }
+    30% {
+        opacity: 0;
+    }
+    40% {
+        opacity: 0;
+    }
     50% {
         opacity: 1;
     }
+    60% {
+        opacity: 1;
+    }
+    70% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
     100% {
-        opacity: 0;
+        opacity: 1;
     }
 }
 /* styling */
@@ -32,4 +52,10 @@ body {
     height: 100%;
     overflow-x: hidden;
     overflow-y: hidden;
+}
+
+a {
+    font-family: "Cascadia Mono";
+    color: rgb(20,160,12);
+    font-size: 1.5em;
 }

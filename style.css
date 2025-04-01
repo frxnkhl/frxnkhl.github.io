@@ -79,7 +79,7 @@ h3 {
     src:url("cascadia.ttf");
 }
 
-#date {
+h4 {
     color: rgb(20,160,12);
     padding: 10px;
     font-family: "Cascadia Mono";

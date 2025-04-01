@@ -30,6 +30,12 @@ span:after {
     40% {
         opacity: 0;
     }
+    41% {
+	opacity: 0;
+    }
+    42% {
+	opacity: 0;
+    }
     50% {
         opacity: 1;
     }

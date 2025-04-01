@@ -72,3 +72,16 @@ h3 {
 @font-face {
     src:url("cascadia.ttf");
 }
+
+#date {
+    color: rgb(20,160,12);
+    padding: 10px;
+    font-family: "Cascadia Mono";
+    font-size: 1.5em;
+	float: left;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	text-align: ;
+	bottom: 0px;
+	width: 100%;
+}

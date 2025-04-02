@@ -18,5 +18,22 @@
 <br>
 <br>
 <a href="https://www.moddb.com/games/project-citadel" class="lnkhver">Project Citadel on ModDB (Half-Life 2 remake)</a>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get all button links
+        const buttons = document.querySelectorAll('.lnkhver');
+        const hoverSound = document.getElementById('linkhover');
+
+        // Add hover event listeners to each button
+        buttons.forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                // Reset sound to beginning (in case it's still playing)
+                hoverSound.currentTime = 0;
+                // Play the sound
+                hoverSound.play();
+            });
+        });
+    });
+</script>
 </body>
 </html>

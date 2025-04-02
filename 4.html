@@ -21,5 +21,22 @@
 <h3>my telegram: frxnkhl</h3>
 <h3>my email: frxnkhl@gmail.com</h3>
 <h3>my WCA account: to be created...</h3>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Get all button links
+        const buttons = document.querySelectorAll('.lnkhver');
+        const hoverSound = document.getElementById('linkhover');
+
+        // Add hover event listeners to each button
+        buttons.forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                // Reset sound to beginning (in case it's still playing)
+                hoverSound.currentTime = 0;
+                // Play the sound
+                hoverSound.play();
+            });
+        });
+    });
+</script>
 </body>
 </html>

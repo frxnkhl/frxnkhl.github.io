@@ -101,3 +101,15 @@ h4 {
     bottom: 0px;
     width: 100%;
 }
+
+.lnkhver {
+    font-family: "Cascadia Mono";
+    color: rgb(20,160,12);
+    font-size: 1.5em;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.lnkhver:hover {
+    opacity: 0.5;
+}

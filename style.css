@@ -74,6 +74,11 @@ a {
     text-decoration: none;
 }
 
+/* Hover effect to change transparency to 50% */
+a:hover {
+  opacity: 0.5; /* 50% transparency on hover */
+}
+
 h3 {
     color: rgb(20,160,12);
     padding: 10px;

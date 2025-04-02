@@ -37,10 +37,10 @@ span:after {
         opacity: 0;
     }
     41% {
-	opacity: 0;
+        opacity: 0;
     }
     42% {
-	opacity: 0;
+        opacity: 0;
     }
     50% {
         opacity: 1;
@@ -74,6 +74,11 @@ a {
     text-decoration: none;
 }
 
+/* Hover effect to change transparency to 50% */
+a:hover {
+    opacity: 0.5; /* 50% transparency on hover */
+}
+
 h3 {
     color: rgb(20,160,12);
     padding: 10px;
@@ -90,9 +95,9 @@ h4 {
     padding: 10px;
     font-family: "Cascadia Mono";
     font-size: 1.5em;
-	float: left;
-	padding-bottom: 10px;
-	padding-top: 10px;
-	bottom: 0px;
-	width: 100%;
+    float: left;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    bottom: 0px;
+    width: 100%;
 }

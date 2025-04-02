@@ -113,4 +113,5 @@ h4 {
 
 .lnkhver:hover {
     opacity: 0.5;
+    text-transform: uppercase;
 }

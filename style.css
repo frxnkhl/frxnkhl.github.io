@@ -2,6 +2,12 @@ body {
     background-color: rgb(10, 10, 10);
 }
 
+h5 {
+    font-family: "Cascadia Mono";
+    font-size: 2em;
+    color: rgb(255,255,255);
+    padding: 10px;
+}
 
 span {
     font-family: "Cascadia Mono";
@@ -29,6 +35,12 @@ span:after {
     }
     40% {
         opacity: 0;
+    }
+    41% {
+	opacity: 0;
+    }
+    42% {
+	opacity: 0;
     }
     50% {
         opacity: 1;
@@ -71,4 +83,17 @@ h3 {
 
 @font-face {
     src:url("cascadia.ttf");
+}
+
+h4 {
+    color: rgb(20, 20, 20);
+    padding: 10px;
+    font-family: "Cascadia Mono";
+    font-size: 1.5em;
+	float: left;
+	padding-bottom: 10px;
+	padding-top: 10px;
+	text-align: ;
+	bottom: 0px;
+	width: 100%;
 }

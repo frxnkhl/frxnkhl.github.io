@@ -2,6 +2,12 @@ body {
     background-color: rgb(10, 10, 10);
 }
 
+h5 {
+    font-family: "Cascadia Mono";
+    font-size: 2em;
+    color: rgb(255,255,255);
+    padding: 10px;
+}
 
 span {
     font-family: "Cascadia Mono";

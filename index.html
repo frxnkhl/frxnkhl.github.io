@@ -14,19 +14,19 @@
     </div>
     <br>
     <br>
-    <a href="https://frxn.xyz/">> home page</a>
+    <a href="https://frxnkhl.github.io/" class="lnkhver">> home page</a>
     <br>
     <br>
-    <a href="/2.html">> about me</a>
+    <a href="/2.html" class="lnkhver">> about me</a>
     <br>
     <br>
-<a href="/4.html">> contact me</a>
+<a href="/4.html" class="lnkhver">> contact me</a>
  <br>
  <br>
- <a href="/5.html">> my projects</a>
+ <a href="/5.html" class="lnkhver">> my projects</a>
 <br>
     <br>
-<a href="mailto:frxnkhl@gmail.com">> mail me</a>
+<a href="mailto:frxnkhl@gmail.com" class="lnkhver">> mail me</a>
  <br>
  <br>
  <br>
@@ -39,6 +39,24 @@
  <br>
  <br>
  <br>
-<h4>last edited 02.04.25</h4>
+    <h4>last edited 02.04.25</h4>
+    <audio id="linkhover" src="lnkhvr.mp3" preload="auto"></audio>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all button links
+            const buttons = document.querySelectorAll('.lnkhver');
+            const hoverSound = document.getElementById('linkhover');
+
+            // Add hover event listeners to each button
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    // Reset sound to beginning (in case it's still playing)
+                    hoverSound.currentTime = 0;
+                    // Play the sound
+                    hoverSound.play();
+                });
+            });
+        });
+    </script>
 </body>
 </html>

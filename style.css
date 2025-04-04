@@ -115,3 +115,7 @@ h4 {
     opacity: 0.5;
     text-transform: uppercase;
 }
+
+center {
+    float: left;
+}

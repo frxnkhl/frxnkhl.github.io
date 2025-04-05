@@ -97,7 +97,6 @@ h4 {
     padding: 10px;
     font-family: "Cascadia Mono";
     font-size: 1.5em;
-    float: center;
     padding-bottom: 10px;
     padding-top: 10px;
     bottom: 0px;
@@ -115,8 +114,4 @@ h4 {
 .lnkhver:hover {
     opacity: 0.5;
     text-transform: uppercase;
-}
-
-center {
-    float: center;
 }

@@ -101,6 +101,7 @@ h4 {
     padding-top: 10px;
     bottom: 0px;
     width: 100%;
+
 }
 
 .lnkhver {
@@ -114,4 +115,11 @@ h4 {
 .lnkhver:hover {
     opacity: 0.5;
     text-transform: uppercase;
+}
+
+.center {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

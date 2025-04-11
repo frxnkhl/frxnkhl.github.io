@@ -8,6 +8,11 @@ h5 {
     padding: 10px;
 }
 
+h5:hover{
+    opacity: 0.5;
+    text-transform: uppercase;
+}
+
 span {
     font-family: "Cascadia Mono";
     font-size: 2em;

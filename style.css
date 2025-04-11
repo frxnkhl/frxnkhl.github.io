@@ -8,8 +8,8 @@ h5 {
     padding: 10px;
 }
 
-h5:hover{
-    opacity: 0.5;
+h5:hover {
+    opacity: 0.75;
     text-transform: uppercase;
 }
 
@@ -81,9 +81,9 @@ a {
     text-decoration: none;
 }
 
-/* Hover effect to change transparency to 50% */
+
 a:hover {
-    opacity: 0.5; /* 50% transparency on hover */
+    opacity: 0.5;
     text-transform: uppercase;
 }
 

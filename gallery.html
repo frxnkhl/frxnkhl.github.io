@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="style.css">
+<head>
+    <meta charset="UTF-8">
+    <title>frxn > gallery</title>
+</head>
+<body>
+    <center>
+        <div class="center">
+            <div id="wrap">
+                <span>~$ gallery</span>
+            </div>
+
+            <br>
+
+            <h3>|</h3>
+
+            <br>
+
+            <a href="/index.html" class="lnkhver">  home page  </a>
+
+            <br>
+            <br>
+
+        </div>
+
+        <img src="img/gmail.png" alt="my first gmail (from a friend)" width="860" height="402.5">
+    </center>
+
+    <audio id="linkhover" src="lnkhvr.mp3" preload="auto"></audio>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all button links
+            const buttons = document.querySelectorAll('.lnkhver');
+            const hoverSound = document.getElementById('linkhover');
+
+            // Add hover event listeners to each button
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    // Reset sound to beginning (in case it's still playing)
+                    hoverSound.currentTime = 0;
+                    // Play the sound
+                    hoverSound.play();
+                });
+            });
+        });
+    </script>
+</body>
+</html>

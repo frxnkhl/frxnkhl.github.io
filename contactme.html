@@ -42,21 +42,44 @@
             <h3>my email: </h3> <a href="mailto:frxnkhl@gmail.com" class="lnkhver">frxnkhl@gmail.com</a>
             
         </div>
+        <h5 id="soundToggle" class="sound-toggle fnaf">toggle hover sound (current: FNAF 3)</h5>
     </center>
-    <audio id="linkhover" src="lnkhvr.mp3" preload="auto"></audio>
+
+    <audio id="fnaflinkhover" src="fnaf3lnk.mp3" preload="auto"></audio>
+    <audio id="hl2linkhover" src="hl2lnk.wav" preload="auto"></audio>
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Get all button links
             const buttons = document.querySelectorAll('.lnkhver');
-            const hoverSound = document.getElementById('linkhover');
+            const fnafSound = document.getElementById('fnaflinkhover');
+            const hl2Sound = document.getElementById('hl2linkhover');
+            const soundToggle = document.getElementById('soundToggle');
 
-            // Add hover event listeners to each button
+            let currentSound = 'fnaf';
+
+            soundToggle.addEventListener('click', function() {
+                if (currentSound === 'fnaf') {
+                    currentSound = 'hl2';
+                    soundToggle.textContent = 'toggle hover sound (current: HL2)';
+                    soundToggle.classList.remove('fnaf');
+                    soundToggle.classList.add('hl2');
+                } else {
+                    currentSound = 'fnaf';
+                    soundToggle.textContent = 'toggle hover sound (current: FNAF 3)';
+                    soundToggle.classList.remove('hl2');
+                    soundToggle.classList.add('fnaf');
+                }
+            });
+
             buttons.forEach(button => {
                 button.addEventListener('mouseenter', function() {
-                    // Reset sound to beginning (in case it's still playing)
-                    hoverSound.currentTime = 0;
-                    // Play the sound
-                    hoverSound.play();
+                    if (currentSound === 'fnaf') {
+                        fnafSound.currentTime = 0;
+                        fnafSound.play();
+                    } else {
+                        hl2Sound.currentTime = 0;
+                        hl2Sound.play();
+                    }
                 });
             });
         });

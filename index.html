@@ -77,6 +77,13 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            let titleState = true;
+
+            setInterval(function() {
+                document.title = titleState ? "frxn_" : "frxn";
+                titleState = !titleState;
+            }, 500);
+
             const buttons = document.querySelectorAll('.lnkhver');
             const fnafSound = document.getElementById('fnaflinkhover');
             const hl2Sound = document.getElementById('hl2linkhover');

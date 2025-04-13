@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="style.css">
 <head>
     <meta charset="UTF-8">
-    <title>frxn > gallery</title>
+    <title>gallery</title>
 </head>
 <body>
     <center>
@@ -35,6 +35,13 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            let titleState = true;
+
+            setInterval(function() {
+                document.title = titleState ? "gallery_" : "gallery";
+                titleState = !titleState;
+            }, 500);
+
             const buttons = document.querySelectorAll('.lnkhver');
             const fnafSound = document.getElementById('fnaflinkhover');
             const hl2Sound = document.getElementById('hl2linkhover');

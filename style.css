@@ -1,9 +1,14 @@
+@font-face {
+    font-family: 'Cascadia Code PL SemiBold';
+    src: url('cascadia.ttf');
+}
+
 body {
     background-color: rgb(10, 10, 10);
 }
 
 h5 {
-    font-family: "Cascadia Mono";
+    font-family: 'Cascadia Code PL SemiBold';
     color: rgb(31, 31, 31);
     padding: 10px;
 }
@@ -14,7 +19,7 @@ h5:hover {
 }
 
 span {
-    font-family: "Cascadia Mono";
+    font-family: 'Cascadia Code PL SemiBold';
     font-size: 2em;
     color: rgb(20,160,12);
     padding: 10px;
@@ -74,7 +79,7 @@ body {
 }
 
 a {
-    font-family: "Cascadia Mono";
+    font-family: 'Cascadia Code PL SemiBold';
     color: rgb(20,160,12);
     font-size: 1.5em;
     padding: 10px;
@@ -90,7 +95,7 @@ a:hover {
 h3 {
     color: rgb(20,160,12);
     padding: 10px;
-    font-family: "Cascadia Mono";
+    font-family: 'Cascadia Code PL SemiBold';
     font-size: 1.5em;
     justify-content: center;
 }
@@ -102,7 +107,7 @@ h3 {
 h4 {
     color: rgb(20, 20, 20);
     padding: 10px;
-    font-family: "Cascadia Mono";
+    font-family: 'Cascadia Code PL SemiBold';
     font-size: 1.5em;
     padding-bottom: 10px;
     padding-top: 10px;
@@ -112,7 +117,7 @@ h4 {
 }
 
 .lnkhver {
-    font-family: "Cascadia Mono";
+    font-family: 'Cascadia Code PL SemiBold';
     color: rgb(20,160,12);
     font-size: 1.5em;
     padding: 10px;

@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1aae6992-7b75-4398-bf83-b7652eb7e91a" name="Changes" comment="how do I center a div">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
-    </list>
+    <list default="true" id="1aae6992-7b75-4398-bf83-b7652eb7e91a" name="Changes" comment="heeeeeere i'm aliiiiiiiiiive everything all of the tiiiiiiiiime" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -103,7 +100,7 @@
       <workItem from="1744359860699" duration="4737000" />
       <workItem from="1744368943870" duration="1020000" />
       <workItem from="1744535585751" duration="340000" />
-      <workItem from="1744788465315" duration="1295000" />
+      <workItem from="1744788465315" duration="1735000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -241,7 +238,23 @@
       <option name="project" value="LOCAL" />
       <updated>1744789156957</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="heeeeeere i'm aliiiiiiiiiive everything all of the tiiiiiiiiime">
+      <option name="closed" value="true" />
+      <created>1744789794354</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1744789794354</updated>
+    </task>
+    <task id="LOCAL-00019" summary="heeeeeere i'm aliiiiiiiiiive everything all of the tiiiiiiiiime">
+      <option name="closed" value="true" />
+      <created>1744790027085</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1744790027085</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,6 +283,7 @@
     <MESSAGE value="test" />
     <MESSAGE value="imagine having a low taper fade" />
     <MESSAGE value="how do I center a div" />
-    <option name="LAST_COMMIT_MESSAGE" value="how do I center a div" />
+    <MESSAGE value="heeeeeere i'm aliiiiiiiiiive everything all of the tiiiiiiiiime" />
+    <option name="LAST_COMMIT_MESSAGE" value="heeeeeere i'm aliiiiiiiiiive everything all of the tiiiiiiiiime" />
   </component>
 </project>

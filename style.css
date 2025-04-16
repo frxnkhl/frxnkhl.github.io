@@ -130,3 +130,12 @@ h4 {
     justify-content: center;
     align-items: center;
 }
+
+.centerindex {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    min-height: 90px;
+}

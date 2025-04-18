@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>3D Rubik's Cube</title>
+	<style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .scene {
+            width: 300px;
+            height: 300px;
+            perspective: 1200px;
+            margin: 0 auto;
+        }
+
+        .cube {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateX(-25deg) rotateY(45deg);
+            transition: transform 0.3s;
+        }
+
+        .face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 5px;
+            padding: 5px;
+            box-sizing: border-box;
+            backface-visibility: visible;
+        }
+
+        .face.front {
+            transform: translateZ(150px);
+        }
+        .face.back {
+            transform: rotateY(180deg) translateZ(150px);
+        }
+        .face.right {
+            transform: rotateY(90deg) translateZ(150px);
+        }
+        .face.left {
+            transform: rotateY(-90deg) translateZ(150px);
+        }
+        .face.top {
+            transform: rotateX(90deg) translateZ(150px);
+        }
+        .face.bottom {
+            transform: rotateX(-90deg) translateZ(150px);
+        }
+
+        .tile {
+            border-radius: 5px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+            cursor: pointer;
+        }
+
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        button {
+            padding: 8px 15px;
+            border: none;
+            background-color: #3498db;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .move-buttons {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+        }
+
+        .instructions {
+            position: absolute;
+            top: 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 14px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            max-width: 350px;
+        }
+
+        .instructions h3 {
+            margin-top: 0;
+        }
+
+        .instructions ul {
+            padding-left: 20px;
+            margin-bottom: 0;
+        }
+	</style>
+</head>
+<body>
+<div class="scene">
+	<div class="cube" id="cube">
+		<div class="face front" id="front"></div>
+		<div class="face back" id="back"></div>
+		<div class="face right" id="right"></div>
+		<div class="face left" id="left"></div>
+		<div class="face top" id="top"></div>
+		<div class="face bottom" id="bottom"></div>
+	</div>
+</div>
+
+<div class="instructions">
+	<h3>Cube Controls</h3>
+	<ul>
+		<li>Click + drag anywhere to rotate the entire cube</li>
+		<li>Use the buttons below to turn faces</li>
+		<li>Prime (') means counterclockwise</li>
+	</ul>
+</div>
+
+<div class="controls">
+	<div class="row">
+		<button id="btnScramble">Scramble</button>
+		<button id="btnReset">Reset</button>
+	</div>
+	<div class="move-buttons">
+		<button data-move="F">F</button>
+		<button data-move="F'">F'</button>
+		<button data-move="U">U</button>
+		<button data-move="U'">U'</button>
+		<button data-move="R">R</button>
+		<button data-move="R'">R'</button>
+		<button data-move="L">L</button>
+		<button data-move="L'">L'</button>
+		<button data-move="B">B</button>
+		<button data-move="B'">B'</button>
+		<button data-move="D">D</button>
+		<button data-move="D'">D'</button>
+	</div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Color scheme
+        const colors = {
+            front: '#FF5252', // Red
+            back: '#FF8F00',  // Orange
+            right: '#2196F3', // Blue
+            left: '#4CAF50',  // Green
+            top: '#FFFFFF',   // White
+            bottom: '#FFEB3B' // Yellow
+        };
+
+        // Create tiles for each face
+        const faces = ['front', 'back', 'right', 'left', 'top', 'bottom'];
+
+        faces.forEach(face => {
+            const faceEl = document.getElementById(face);
+            for (let i = 0; i < 9; i++) {
+                const tile = document.createElement('div');
+                tile.className = 'tile';
+                tile.style.backgroundColor = colors[face];
+                tile.dataset.faceColor = colors[face];
+                tile.dataset.face = face;
+                tile.dataset.index = i;
+                faceEl.appendChild(tile);
+            }
+        });
+
+        // Setup cube rotation
+        const cube = document.getElementById('cube');
+        let rotateX = -25;
+        let rotateY = 45;
+        let isDragging = false;
+        let startX, startY;
+
+        function updateCubeRotation() {
+            cube.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        }
+
+        // Handle mouse events for cube rotation
+        document.addEventListener('mousedown', function(e) {
+            if (e.target.closest('.controls')) return; // Skip if clicking on controls
+
+            isDragging = true;
+            startX = e.clientX;
+            startY = e.clientY;
+        });
+
+        document.addEventListener('mousemove', function(e) {
+            if (!isDragging) return;
+
+            const deltaX = e.clientX - startX;
+            const deltaY = e.clientY - startY;
+
+            rotateY += deltaX * 0.5;
+            rotateX += deltaY * 0.5;
+
+            // Limit vertical rotation for usability
+            rotateX = Math.max(-80, Math.min(80, rotateX));
+
+            updateCubeRotation();
+
+            startX = e.clientX;
+            startY = e.clientY;
+        });
+
+        document.addEventListener('mouseup', function() {
+            isDragging = false;
+        });
+
+        // Store the original transform values for each face
+        const originalTransforms = {};
+        faces.forEach(face => {
+            const faceEl = document.getElementById(face);
+            originalTransforms[face] = getComputedStyle(faceEl).transform;
+        });
+
+        // Get initial state of the cube
+        function getCurrentState() {
+            const state = {};
+            faces.forEach(face => {
+                state[face] = Array.from(document.querySelectorAll(`#${face} .tile`))
+                    .map(tile => tile.style.backgroundColor);
+            });
+            return state;
+        }
+
+        // Save initial state
+        const initialState = getCurrentState();
+
+        // Reset button
+        document.getElementById('btnReset').addEventListener('click', function() {
+            // Reset cube rotation
+            rotateX = -25;
+            rotateY = 45;
+            updateCubeRotation();
+
+            // Reset cube colors
+            faces.forEach(face => {
+                const tiles = document.querySelectorAll(`#${face} .tile`);
+                tiles.forEach((tile, index) => {
+                    tile.style.backgroundColor = initialState[face][index];
+                });
+
+                // Reset face transforms
+                const faceEl = document.getElementById(face);
+                if (face === 'front') {
+                    faceEl.style.transform = 'translateZ(150px)';
+                } else if (face === 'back') {
+                    faceEl.style.transform = 'rotateY(180deg) translateZ(150px)';
+                } else if (face === 'right') {
+                    faceEl.style.transform = 'rotateY(90deg) translateZ(150px)';
+                } else if (face === 'left') {
+                    faceEl.style.transform = 'rotateY(-90deg) translateZ(150px)';
+                } else if (face === 'top') {
+                    faceEl.style.transform = 'rotateX(90deg) translateZ(150px)';
+                } else if (face === 'bottom') {
+                    faceEl.style.transform = 'rotateX(-90deg) translateZ(150px)';
+                }
+            });
+        });
+
+        // Scramble the cube
+        document.getElementById('btnScramble').addEventListener('click', function() {
+            const moves = ['F', 'F\'', 'B', 'B\'', 'L', 'L\'', 'R', 'R\'', 'U', 'U\'', 'D', 'D\''];
+            const sequence = [];
+
+            // Generate 20 random moves
+            for (let i = 0; i < 20; i++) {
+                sequence.push(moves[Math.floor(Math.random() * moves.length)]);
+            }
+
+            // Execute the moves with a delay between them
+            executeSequence(sequence);
+        });
+
+        // Execute a sequence of moves with animation
+        function executeSequence(moves, index = 0) {
+            if (index >= moves.length) return;
+
+            const move = moves[index];
+            executeMove(move);
+
+            setTimeout(() => {
+                executeSequence(moves, index + 1);
+            }, 300);
+        }
+
+        // Add event listeners to all move buttons
+        document.querySelectorAll('.move-buttons button').forEach(button => {
+            button.addEventListener('click', function() {
+                const move = this.getAttribute('data-move');
+                executeMove(move);
+            });
+        });
+
+        // Execute a single move
+        function executeMove(move) {
+            // Get the face and direction
+            const face = move.charAt(0);
+            const clockwise = move.length === 1;
+
+            // Map the face letter to the actual face id
+            const faceMap = {
+                'F': 'front',
+                'B': 'back',
+                'R': 'right',
+                'L': 'left',
+                'U': 'top',
+                'D': 'bottom'
+            };
+
+            const faceId = faceMap[face];
+            if (!faceId) return;
+
+            const faceEl = document.getElementById(faceId);
+
+            // Determine the axis and direction based on the face
+            let axis, direction;
+
+            if (faceId === 'front' || faceId === 'back') {
+                axis = 'Z';
+            } else if (faceId === 'right' || faceId === 'left') {
+                axis = 'X';
+            } else { // top or bottom
+                axis = 'Y';
+            }
+
+            // Adjust direction based on face and clockwise/counterclockwise
+            if (faceId === 'front' || faceId === 'right' || faceId === 'top') {
+                direction = clockwise ? 90 : -90;
+            } else {
+                direction = clockwise ? -90 : 90;
+            }
+
+            // Apply the animation
+            faceEl.style.transition = 'transform 0.3s';
+
+            // Get original transform and add rotation
+            let baseTransform;
+            if (faceId === 'front') {
+                baseTransform = 'translateZ(150px)';
+            } else if (faceId === 'back') {
+                baseTransform = 'rotateY(180deg) translateZ(150px)';
+            } else if (faceId === 'right') {
+                baseTransform = 'rotateY(90deg) translateZ(150px)';
+            } else if (faceId === 'left') {
+                baseTransform = 'rotateY(-90deg) translateZ(150px)';
+            } else if (faceId === 'top') {
+                baseTransform = 'rotateX(90deg) translateZ(150px)';
+            } else if (faceId === 'bottom') {
+                baseTransform = 'rotateX(-90deg) translateZ(150px)';
+            }
+
+            faceEl.style.transform = `${baseTransform} rotate${axis}(${direction}deg)`;
+
+            // Update colors after animation completes
+            setTimeout(() => {
+                // Reset the transform
+                faceEl.style.transition = '';
+                faceEl.style.transform = baseTransform;
+
+                // Update colors based on the move
+                updateColorsAfterMove(face, clockwise);
+            }, 300);
+        }
+
+        // Update the colors after a move
+        function updateColorsAfterMove(face, clockwise) {
+            // Get current state
+            const state = getCurrentState();
+
+            // This contains the rotation logic for each face
+            const rotateClockwise = (faceId) => {
+                const newOrder = [6, 3, 0, 7, 4, 1, 8, 5, 2];
+                const tiles = document.querySelectorAll(`#${faceId} .tile`);
+                for (let i = 0; i < 9; i++) {
+                    tiles[i].style.backgroundColor = state[faceId][newOrder[i]];
+                }
+            };
+
+            const rotateCounterClockwise = (faceId) => {
+                const newOrder = [2, 5, 8, 1, 4, 7, 0, 3, 6];
+                const tiles = document.querySelectorAll(`#${faceId} .tile`);
+                for (let i = 0; i < 9; i++) {
+                    tiles[i].style.backgroundColor = state[faceId][newOrder[i]];
+                }
+            };
+
+            // Rotate the face itself
+            const faceId = face === 'F' ? 'front' :
+                face === 'B' ? 'back' :
+                    face === 'R' ? 'right' :
+                        face === 'L' ? 'left' :
+                            face === 'U' ? 'top' : 'bottom';
+
+            if (clockwise) {
+                rotateClockwise(faceId);
+            } else {
+                rotateCounterClockwise(faceId);
+            }
+
+            // Update the adjacent faces' edges and corners
+            updateAdjacentFaces(face, clockwise, state);
+        }
+
+        // Update adjacent faces after a move
+        function updateAdjacentFaces(face, clockwise, state) {
+            // These indices correspond to the positions on a face:
+            // 0 1 2
+            // 3 4 5
+            // 6 7 8
+
+            if (face === 'F') {
+                // Get all affected pieces on adjacent faces
+                const topIndices = [6, 7, 8]; // Bottom row of top face
+                const rightIndices = [0, 3, 6]; // Left column of right face
+                const bottomIndices = [2, 1, 0]; // Top row of bottom face (reversed)
+                const leftIndices = [8, 5, 2]; // Right column of left face
+
+                // Get current colors
+                const topColors = topIndices.map(i => state.top[i]);
+                const rightColors = rightIndices.map(i => state.right[i]);
+                const bottomColors = bottomIndices.map(i => state.bottom[i]);
+                const leftColors = leftIndices.map(i => state.left[i]);
+
+                // Update colors based on rotation direction
+                if (clockwise) {
+                    // Top -> Right, Right -> Bottom, Bottom -> Left, Left -> Top
+                    updateTileColors('top', topIndices, leftColors);
+                    updateTileColors('right', rightIndices, topColors);
+                    updateTileColors('bottom', bottomIndices, rightColors);
+                    updateTileColors('left', leftIndices, bottomColors);
+                } else {
+                    // Top -> Left, Left -> Bottom, Bottom -> Right, Right -> Top
+                    updateTileColors('top', topIndices, rightColors);
+                    updateTileColors('right', rightIndices, bottomColors);
+                    updateTileColors('bottom', bottomIndices, leftColors);
+                    updateTileColors('left', leftIndices, topColors);
+                }
+            }
+            else if (face === 'B') {
+                // Get all affected pieces on adjacent faces
+                const topIndices = [2, 1, 0]; // Top row of top face
+                const leftIndices = [0, 3, 6]; // Left column of left face
+                const bottomIndices = [6, 7, 8]; // Bottom row of bottom face
+                const rightIndices = [8, 5, 2]; // Right column of right face
+
+                // Get current colors
+                const topColors = topIndices.map(i => state.top[i]);
+                const leftColors = leftIndices.map(i => state.left[i]);
+                const bottomColors = bottomIndices.map(i => state.bottom[i]);
+                const rightColors = rightIndices.map(i => state.right[i]);
+
+                // Update colors based on rotation direction
+                if (clockwise) {
+                    // Top -> Left, Left -> Bottom, Bottom -> Right, Right -> Top
+                    updateTileColors('top', topIndices, rightColors);
+                    updateTileColors('left', leftIndices, topColors);
+                    updateTileColors('bottom', bottomIndices, leftColors);
+                    updateTileColors('right', rightIndices, bottomColors);
+                } else {
+                    // Top -> Right, Right -> Bottom, Bottom -> Left, Left -> Top
+                    updateTileColors('top', topIndices, leftColors);
+                    updateTileColors('left', leftIndices, bottomColors);
+                    updateTileColors('bottom', bottomIndices, rightColors);
+                    updateTileColors('right', rightIndices, topColors);
+                }
+            }
+            else if (face === 'R') {
+                // Get all affected pieces on adjacent faces
+                const topIndices = [2, 5, 8]; // Right column of top face
+                const backIndices = [0, 3, 6]; // Left column of back face (reversed order)
+                const bottomIndices = [2, 5, 8]; // Right column of bottom face
+                const frontIndices = [2, 5, 8]; // Right column of front face
+
+                // Get current colors
+                const topColors = topIndices.map(i => state.top[i]);
+                const backColors = backIndices.map(i => state.back[i]).reverse(); // Reversed for proper alignment
+                const bottomColors = bottomIndices.map(i => state.bottom[i]);
+                const frontColors = frontIndices.map(i => state.front[i]);
+
+                // Update colors based on rotation direction
+                if (clockwise) {
+                    // Top -> Front, Front -> Bottom, Bottom -> Back, Back -> Top
+                    updateTileColors('top', topIndices, backColors.slice().reverse());
+                    updateTileColors('front', frontIndices, topColors);
+                    updateTileColors('bottom', bottomIndices, frontColors);
+                    // Need to reverse for back face due to orientation
+                    updateTileColorsReversed('back', backIndices, bottomColors);
+                } else {
+                    // Top -> Back, Back -> Bottom, Bottom -> Front, Front -> Top
+                    updateTileColorsReversed('top', topIndices, frontColors);
+                    updateTileColors('front', frontIndices, bottomColors);
+                    updateTileColors('bottom', bottomIndices, backColors.slice().reverse());
+                    // Need to reverse for back face due to orientation
+                    updateTileColorsReversed('back', backIndices, topColors);
+                }
+            }
+            else if (face === 'L') {
+                // Get all affected pieces on adjacent faces
+                const topIndices = [0, 3, 6]; // Left column of top face
+                const frontIndices = [0, 3, 6]; // Left column of front face
+                const bottomIndices = [0, 3, 6]; // Left column of bottom face
+                const backIndices = [8, 5, 2]; // Right column of back face (reversed order)
+
+                // Get current colors
+                const topColors = topIndices.map(i => state.top[i]);
+                const frontColors = frontIndices.map(i => state.front[i]);
+                const bottomColors = bottomIndices.map(i => state.bottom[i]);
+                const backColors = backIndices.map(i => state.back[i]).reverse(); // Reversed for proper alignment
+
+                // Update colors based on rotation direction
+                if (clockwise) {
+                    // Top -> Back, Back -> Bottom, Bottom -> Front, Front -> Top
+                    updateTileColors('top', topIndices, frontColors);
+                    updateTileColors('front', frontIndices, bottomColors);
+                    updateTileColors('bottom', bottomIndices, backColors);
+                    // Need to reverse for back face due to orientation
+                    updateTileColorsReversed('back', backIndices, topColors);
+                } else {
+                    // Top -> Front, Front -> Bottom, Bottom -> Back, Back -> Top
+                    updateTileColors('top', topIndices, backColors);
+                    updateTileColors('front', frontIndices, topColors);
+                    updateTileColors('bottom', bottomIndices, frontColors);
+                    // Need to reverse for back face due to orientation
+                    updateTileColorsReversed('back', backIndices, bottomColors);
+                }
+            }
+            else if (face === 'U') {
+                // Get all affected pieces on adjacent faces
+                const frontIndices = [0, 1, 2]; // Top row of front face
+                const rightIndices = [0, 1, 2]; // Top row of right face
+                const backIndices = [0, 1, 2]; // Top row of back face
+                const leftIndices = [0, 1, 2]; // Top row of left face
+
+                // Get current colors
+                const frontColors = frontIndices.map(i => state.front[i]);
+                const rightColors = rightIndices.map(i => state.right[i]);
+                const backColors = backIndices.map(i => state.back[i]);
+                const leftColors = leftIndices.map(i => state.left[i]);
+
+                // Update colors based on rotation direction
+                if (clockwise) {
+                    // Front -> Right, Right -> Back, Back -> Left, Left -> Front
+                    updateTileColors('front', frontIndices, leftColors);
+                    updateTileColors('right', rightIndices, frontColors);
+                    updateTileColors('back', backIndices, rightColors);
+                    updateTileColors('left', leftIndices, backColors);
+                } else {
+                    // Front -> Left, Left -> Back, Back -> Right, Right -> Front
+                    updateTileColors('front', frontIndices, rightColors);
+                    updateTileColors('right', rightIndices, backColors);
+                    updateTileColors('back', backIndices, leftColors);
+                    updateTileColors('left', leftIndices, frontColors);
+                }
+            }
+            else if (face === 'D') {
+                // Get all affected pieces on adjacent faces
+                const frontIndices = [6, 7, 8]; // Bottom row of front face
+                const leftIndices = [6, 7, 8]; // Bottom row of left face
+                const backIndices = [6, 7, 8]; // Bottom row of back face
+                const rightIndices = [6, 7, 8]; // Bottom row of right face
+
+                // Get current colors
+                const frontColors = frontIndices.map(i => state.front[i]);
+                const leftColors = leftIndices.map(i => state.left[i]);
+                const backColors = backIndices.map(i => state.back[i]);
+                const rightColors = rightIndices.map(i => state.right[i]);
+
+                // Update colors based on rotation direction
+                if (clockwise) {
+                    // Front -> Left, Left -> Back, Back -> Right, Right -> Front
+                    updateTileColors('front', frontIndices, rightColors);
+                    updateTileColors('left', leftIndices, frontColors);
+                    updateTileColors('back', backIndices, leftColors);
+                    updateTileColors('right', rightIndices, backColors);
+                } else {
+                    // Front -> Right, Right -> Back, Back -> Left, Left -> Front
+                    updateTileColors('front', frontIndices, leftColors);
+                    updateTileColors('left', leftIndices, backColors);
+                    updateTileColors('back', backIndices, rightColors);
+                    updateTileColors('right', rightIndices, frontColors);
+                }
+            }
+        }
+
+        // Helper function to update tile colors
+        function updateTileColors(faceId, indices, colors) {
+            for (let i = 0; i < indices.length; i++) {
+                document.querySelector(`#${faceId} .tile[data-index="${indices[i]}"]`).style.backgroundColor = colors[i];
+            }
+        }
+
+        // Helper function to update tile colors in reverse order
+        function updateTileColorsReversed(faceId, indices, colors) {
+            for (let i = 0; i < indices.length; i++) {
+                document.querySelector(`#${faceId} .tile[data-index="${indices[i]}"]`).style.backgroundColor = colors[indices.length - 1 - i];
+            }
+        }
+    });
+</script>
+</body>
+</html>

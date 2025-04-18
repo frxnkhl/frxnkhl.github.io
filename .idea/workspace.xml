@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1aae6992-7b75-4398-bf83-b7652eb7e91a" name="Changes" comment="t">
+    <list default="true" id="1aae6992-7b75-4398-bf83-b7652eb7e91a" name="Changes" comment="shhhhhh">
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +104,7 @@
       <workItem from="1744368943870" duration="1020000" />
       <workItem from="1744535585751" duration="340000" />
       <workItem from="1744788465315" duration="2551000" />
-      <workItem from="1744964522050" duration="3587000" />
+      <workItem from="1744964522050" duration="3855000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -275,7 +274,23 @@
       <option name="project" value="LOCAL" />
       <updated>1744964550830</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="shhhhhh">
+      <option name="closed" value="true" />
+      <created>1744968290746</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1744968290746</updated>
+    </task>
+    <task id="LOCAL-00023" summary="shhhhhh">
+      <option name="closed" value="true" />
+      <created>1744968337557</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1744968337557</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -307,6 +322,7 @@
     <MESSAGE value="heeeeeere i'm aliiiiiiiiiive everything all of the tiiiiiiiiime" />
     <MESSAGE value="sounds are saved" />
     <MESSAGE value="t" />
-    <option name="LAST_COMMIT_MESSAGE" value="t" />
+    <MESSAGE value="shhhhhh" />
+    <option name="LAST_COMMIT_MESSAGE" value="shhhhhh" />
   </component>
 </project>

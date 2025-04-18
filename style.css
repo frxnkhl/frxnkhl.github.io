@@ -144,3 +144,11 @@ h4 {
     height: 90vh;
     min-height: 90px;
 }
+
+.oial {
+    color: rgb(20,160,12);
+    padding: 10px;
+    font-family: 'Cascadia Code PL SemiBold';
+    font-size: 0.75em;
+    justify-content: center;
+}

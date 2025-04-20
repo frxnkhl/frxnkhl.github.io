@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1aae6992-7b75-4398-bf83-b7652eb7e91a" name="Changes" comment="commit message">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/contactme.html" beforeDir="false" afterPath="$PROJECT_DIR$/contactme.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/links.html" beforeDir="false" afterPath="$PROJECT_DIR$/links.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +24,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;history&quot;: [
@@ -106,7 +107,7 @@
       <workItem from="1744535585751" duration="340000" />
       <workItem from="1744788465315" duration="2551000" />
       <workItem from="1744964522050" duration="4471000" />
-      <workItem from="1745145917130" duration="1038000" />
+      <workItem from="1745145917130" duration="1589000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -300,7 +301,31 @@
       <option name="project" value="LOCAL" />
       <updated>1744968417155</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="commit message">
+      <option name="closed" value="true" />
+      <created>1745147164495</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1745147164495</updated>
+    </task>
+    <task id="LOCAL-00026" summary="commit message">
+      <option name="closed" value="true" />
+      <created>1745147247926</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1745147247926</updated>
+    </task>
+    <task id="LOCAL-00027" summary="commit message">
+      <option name="closed" value="true" />
+      <created>1745147426503</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1745147426503</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

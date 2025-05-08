@@ -9,133 +9,125 @@
 </head>
 
 <body>
-    <center>
-        <div class="centerindex">
-            <div id="wrap">
-                <span>~$ hello, I'm frxn</span>
-                <br>
-                <span>~$ nothing here. press something</span>
-            </div>
-
+<center>
+    <div class="centerindex">
+        <div id="wrap">
+            <span>~$ hello, I'm frxn</span>
             <br>
-            <br>
-
-            <a href="https://frxn.xyz/" class="lnkhver">  home page  </a>
-
-            <br>
-
-            <h3>|</h3>
-
-            <br>
-
-            <a href="/aboutme" class="lnkhver">  about me  </a>
-
-            <br>
-
-            <h3>|</h3>
-
-            <br>
-
-            <a href="/links" class="lnkhver">  links  </a>
-
-            <br>
-
-            <h3>|</h3>
-
-            <br>
-
-            <a href="/projects" class="lnkhver">  my projects  </a>
-
-            <br>
-
-            <h3>|</h3>
-
-            <br>
-
-            <a href="/gallery" class="lnkhver">  gallery</a>
-
-            <br>
-
-            <div class="oial">
-            <a href="https://youtu.be/5IsSpAOD6K8?list=TLPQMTgwNDIwMjXKOZM9XIQ41w" class="lnkhver"><h3>|</h3></a>
-            </div>
-
-            <br>
-
-            <a href="mailto:frxnkhl@gmail.com" class="lnkhver">mail me  </a>
-
-            <br>
-            <br>
-            <br>
-            <br>
-
+            <span>~$ nothing here. press something</span>
         </div>
 
-        <h5 id="soundToggle" class="sound-toggle fnaf">toggle hover sound (current: FNAF 3)</h5>
-    </center>
+        <br>
+        <br>
 
-    <audio id="fnaflinkhover" src="snd/fnaf3lnk.mp3" preload="auto"></audio>
-    <audio id="hl2linkhover" src="snd/hl2lnk.wav" preload="auto"></audio>
+        <a href="/aboutme" class="lnkhver">  about me  </a>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Title blinking effect
-            let titleState = true;
-            
-            setInterval(function() {
-                document.title = titleState ? "frxn_" : "frxn";
-                titleState = !titleState;
-            }, 1000); // Switch every 1000ms (1 second)
-            
-            // Sound toggle functionality
-            const buttons = document.querySelectorAll('.lnkhver');
-            const fnafSound = document.getElementById('fnaflinkhover');
-            const hl2Sound = document.getElementById('hl2linkhover');
-            const soundToggle = document.getElementById('soundToggle');
+        <br>
 
-            // Check if there's a saved sound preference in localStorage
-            let currentSound = localStorage.getItem('frxnSoundPreference') || 'fnaf';
-            
-            // Update UI to match the saved preference on page load
-            if (currentSound === 'hl2') {
+        <h3>|</h3>
+
+        <br>
+
+        <a href="/links" class="lnkhver">  links  </a>
+
+        <br>
+
+        <h3>|</h3>
+
+        <br>
+
+        <a href="/projects" class="lnkhver">  my projects  </a>
+
+        <br>
+
+        <h3>|</h3>
+
+        <br>
+
+        <a href="/gallery" class="lnkhver">  gallery</a>
+
+        <br>
+
+        <div class="oial">
+            <a href="https://youtu.be/5IsSpAOD6K8?list=TLPQMTgwNDIwMjXKOZM9XIQ41w" class="lnkhver"><h3>|</h3></a>
+        </div>
+
+        <br>
+
+        <a href="mailto:frxnkhl@gmail.com" class="lnkhver">mail me  </a>
+
+        <br>
+        <br>
+        <br>
+        <br>
+
+    </div>
+
+    <h5 id="soundToggle" class="sound-toggle fnaf">toggle hover sound (current: FNAF 3)</h5>
+</center>
+
+<audio id="fnaflinkhover" src="snd/fnaf3lnk.mp3" preload="auto"></audio>
+<audio id="hl2linkhover" src="snd/hl2lnk.wav" preload="auto"></audio>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Title blinking effect
+        let titleState = true;
+
+        setInterval(function() {
+            document.title = titleState ? "frxn_" : "frxn";
+            titleState = !titleState;
+        }, 1000); // Switch every 1000ms (1 second)
+
+        // Sound toggle functionality
+        const buttons = document.querySelectorAll('.lnkhver');
+        const fnafSound = document.getElementById('fnaflinkhover');
+        const hl2Sound = document.getElementById('hl2linkhover');
+        const soundToggle = document.getElementById('soundToggle');
+
+        // Check if there's a saved sound preference in localStorage
+        let currentSound = localStorage.getItem('frxnSoundPreference') || 'fnaf';
+
+        // Update UI to match the saved preference on page load
+        if (currentSound === 'hl2') {
+            soundToggle.textContent = 'toggle hover sound (current: HL2)';
+            soundToggle.classList.remove('fnaf');
+            soundToggle.classList.add('hl2');
+        } else {
+            soundToggle.textContent = 'toggle hover sound (current: FNAF 3)';
+            soundToggle.classList.remove('hl2');
+            soundToggle.classList.add('fnaf');
+        }
+
+        soundToggle.addEventListener('click', function() {
+            if (currentSound === 'fnaf') {
+                currentSound = 'hl2';
                 soundToggle.textContent = 'toggle hover sound (current: HL2)';
                 soundToggle.classList.remove('fnaf');
                 soundToggle.classList.add('hl2');
             } else {
+                currentSound = 'fnaf';
                 soundToggle.textContent = 'toggle hover sound (current: FNAF 3)';
                 soundToggle.classList.remove('hl2');
                 soundToggle.classList.add('fnaf');
             }
 
-            soundToggle.addEventListener('click', function() {
-                if (currentSound === 'fnaf') {
-                    currentSound = 'hl2';
-                    soundToggle.textContent = 'toggle hover sound (current: HL2)';
-                    soundToggle.classList.remove('fnaf');
-                    soundToggle.classList.add('hl2');
-                } else {
-                    currentSound = 'fnaf';
-                    soundToggle.textContent = 'toggle hover sound (current: FNAF 3)';
-                    soundToggle.classList.remove('hl2');
-                    soundToggle.classList.add('fnaf');
-                }
-                
-                // Save the current sound preference to localStorage
-                localStorage.setItem('frxnSoundPreference', currentSound);
-            });
+            // Save the current sound preference to localStorage
+            localStorage.setItem('frxnSoundPreference', currentSound);
+        });
 
-            buttons.forEach(button => {
-                button.addEventListener('mouseenter', function() {
-                    if (currentSound === 'fnaf') {
-                        fnafSound.currentTime = 0;
-                        fnafSound.play();
-                    } else {
-                        hl2Sound.currentTime = 0;
-                        hl2Sound.play();
-                    }
-                });
+        buttons.forEach(button => {
+            button.addEventListener('mouseenter', function() {
+                if (currentSound === 'fnaf') {
+                    fnafSound.currentTime = 0;
+                    fnafSound.play();
+                } else {
+                    hl2Sound.currentTime = 0;
+                    hl2Sound.play();
+                }
             });
         });
-    </script>
+    });
+</script>
 </body>
 </html>

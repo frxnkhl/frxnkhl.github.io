@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1aae6992-7b75-4398-bf83-b7652eb7e91a" name="Changes" comment="commit message">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2026.html" beforeDir="false" afterPath="$PROJECT_DIR$/2026.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -84,6 +85,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\frxn\Documents\GitHub\frxnkhl.github.io" />
+      <recent name="C:\Users\frxn\Documents\GitHub\frxnkhl.github.io\snd" />
       <recent name="C:\Users\frxn\Documents\GitHub\frxnkhl.github.io\img\2026" />
       <recent name="C:\Users\frxn\Documents\GitHub\frxnkhl.github.io\img" />
     </key>
@@ -122,7 +125,7 @@
       <workItem from="1746447314840" duration="697000" />
       <workItem from="1746623003094" duration="4000" />
       <workItem from="1746692766039" duration="3808000" />
-      <workItem from="1747670790568" duration="2399000" />
+      <workItem from="1747670790568" duration="3883000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -412,7 +415,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747672879235</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="commit message">
+      <option name="closed" value="true" />
+      <created>1747673477085</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1747673477085</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

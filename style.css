@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Cascadia Code PL SemiBold';
-    src: url('cascadia.ttf');
+    src: url('fnt/cascadia.ttf');
 }
 
 body {
@@ -101,7 +101,7 @@ h3 {
 }
 
 @font-face {
-    src:url("cascadia.ttf");
+    src:url("fnt/cascadia.ttf");
 }
 
 h4 {

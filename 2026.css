@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'Onder';
+    src: url('fnt/onder.ttf');
+}
+
+body {
+    background-color: rgb(0, 0, 0);
+}
+
+h4 {
+    font-family: 'Onder';
+    src: url('fnt/onder.ttf');
+    color: rgb(255, 255, 255);
+}

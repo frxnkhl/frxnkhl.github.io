@@ -12,3 +12,9 @@ h4 {
     src: url('fnt/onder.ttf');
     color: rgb(255, 255, 255);
 }
+
+h5 {
+    font-family: 'Times New Roman';
+    font-style: italic;
+    color: white;
+}

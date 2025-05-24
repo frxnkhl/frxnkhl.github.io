@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1aae6992-7b75-4398-bf83-b7652eb7e91a" name="Changes" comment="commit message">
-      <change beforePath="$PROJECT_DIR$/snd/aguwa.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aboutme.html" beforeDir="false" afterPath="$PROJECT_DIR$/aboutme.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,6 +127,7 @@
       <workItem from="1746692766039" duration="3808000" />
       <workItem from="1747670790568" duration="4546000" />
       <workItem from="1748020281049" duration="291000" />
+      <workItem from="1748020664778" duration="1193000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -447,7 +449,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748020295951</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="commit message">
+      <option name="closed" value="true" />
+      <created>1748020767241</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1748020767241</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

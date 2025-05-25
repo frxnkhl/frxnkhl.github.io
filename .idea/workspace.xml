@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1aae6992-7b75-4398-bf83-b7652eb7e91a" name="Changes" comment="commit message">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aboutme.html" beforeDir="false" afterPath="$PROJECT_DIR$/aboutme.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,36 +53,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;JavaScript Debug.2.html.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.2026.html.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.4.html.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.5.html.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.aboutme.html.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.contactme.html.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.gallery.html.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.index - Copy.html.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.index.html.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.links.html.executor&quot;: &quot;Run&quot;,
-    &quot;JavaScript Debug.projects.html.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/frxn/Documents/GitHub/veryverynice&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.Mappings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "JavaScript Debug.2.html.executor": "Run",
+    "JavaScript Debug.2026.html.executor": "Run",
+    "JavaScript Debug.4.html.executor": "Run",
+    "JavaScript Debug.5.html.executor": "Run",
+    "JavaScript Debug.aboutme.html.executor": "Run",
+    "JavaScript Debug.contactme.html.executor": "Run",
+    "JavaScript Debug.gallery.html.executor": "Run",
+    "JavaScript Debug.index - Copy.html.executor": "Run",
+    "JavaScript Debug.index.html.executor": "Run",
+    "JavaScript Debug.links.html.executor": "Run",
+    "JavaScript Debug.projects.html.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/frxn/Documents/GitHub/frxnkhl.github.io/img",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "project.propVCSSupport.Mappings",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\frxn\Documents\GitHub\frxnkhl.github.io\img" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\frxn\Documents\GitHub\frxnkhl.github.io" />
       <recent name="C:\Users\frxn\Documents\GitHub\frxnkhl.github.io\snd" />
@@ -131,6 +134,7 @@
       <workItem from="1748168510206" duration="13000" />
       <workItem from="1748169760369" duration="15000" />
       <workItem from="1748171220126" duration="16000" />
+      <workItem from="1748180754292" duration="328000" />
     </task>
     <task id="LOCAL-00001" summary="test">
       <option name="closed" value="true" />
@@ -492,7 +496,31 @@
       <option name="project" value="LOCAL" />
       <updated>1748066150631</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="commit message">
+      <option name="closed" value="true" />
+      <created>1748180862439</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1748180862439</updated>
+    </task>
+    <task id="LOCAL-00047" summary="commit message">
+      <option name="closed" value="true" />
+      <created>1748180931654</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1748180931654</updated>
+    </task>
+    <task id="LOCAL-00048" summary="commit message">
+      <option name="closed" value="true" />
+      <created>1748181022027</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1748181022027</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -11,3 +11,13 @@ h3 {
     color: azure;
     font-family: Segoe UI;
 }
+
+h5 {
+    color: lightslategray;
+    font-family: Segoe UI;
+}
+
+img:hover {
+    opacity: 0.5;
+    text-transform: uppercase;
+}

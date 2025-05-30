@@ -5,9 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1aae6992-7b75-4398-bf83-b7652eb7e91a" name="Changes" comment="commit message">
-      <change afterPath="$PROJECT_DIR$/oll.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/oll.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/img/oll/45.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/oll/fruruf.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/oll.css" beforeDir="false" afterPath="$PROJECT_DIR$/oll.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oll.html" beforeDir="false" afterPath="$PROJECT_DIR$/oll.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,23 +148,7 @@
       <workItem from="1748180754292" duration="628000" />
       <workItem from="1748239388361" duration="44000" />
       <workItem from="1748266498518" duration="2202000" />
-      <workItem from="1748603070933" duration="2219000" />
-    </task>
-    <task id="LOCAL-00002" summary="added everything in its right place">
-      <option name="closed" value="true" />
-      <created>1743924587146</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1743924587146</updated>
-    </task>
-    <task id="LOCAL-00003" summary="aaaa">
-      <option name="closed" value="true" />
-      <created>1743931443453</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1743931443453</updated>
+      <workItem from="1748603070933" duration="3241000" />
     </task>
     <task id="LOCAL-00004" summary="aaaa">
       <option name="closed" value="true" />
@@ -540,7 +526,23 @@
       <option name="project" value="LOCAL" />
       <updated>1748266603036</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="commit message">
+      <option name="closed" value="true" />
+      <created>1748606165024</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1748606165024</updated>
+    </task>
+    <task id="LOCAL-00052" summary="commit message">
+      <option name="closed" value="true" />
+      <created>1748606179945</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1748606179945</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

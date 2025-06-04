@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>hey vsauce michael here, but now.. i'm not</title>
+	<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: black;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .video-container {
+            max-width: 50%;
+            max-height: 50%;
+            text-align: center;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .audio-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: rgba(121, 121, 121, 0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000;
+            transition: background-color 0.3s;
+        }
+
+        .audio-icon:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .hidden {
+            display: none;
+        }
+	</style>
+</head>
+<body>
+<div class="video-container">
+	<video loop muted playsinline class="hidden">
+		<source src="vid/vsauce.mp4" type="video/mp4">
+	</video>
+
+	<div class="audio-icon" id="audio-toggle">
+		<span>⏯️</span>
+	</div>
+
+	<script>
+        const video = document.querySelector('video');
+        const audioToggle = document.getElementById('audio-toggle');
+
+        // Play video when button is clicked
+        audioToggle.addEventListener('click', function() {
+            video.classList.remove('hidden');
+            video.muted = false;
+            video.play();
+            audioToggle.classList.add('hidden');
+        });
+	</script>
+</div>
+</body>
+</html>

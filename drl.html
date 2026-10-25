@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DRL</title>
+  <style>
+    @font-face {
+      font-family: "F1 Bold";
+      src: url("fonts/f1bold.ttf") format("truetype");
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "F1 Black";
+      src: url("fonts/f1black.ttf") format("truetype");
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "F1 Wide";
+      src: url("fonts/f1wide.ttf") format("truetype");
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "F1 Regular";
+      src: url("fonts/f1regular.ttf") format("truetype");
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "KH Regular";
+      src: url("fonts/khregular.otf") format("opentype");
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "KH Bold";
+      src: url("fonts/khbold.otf") format("opentype");
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "KH Light";
+      src: url("fonts/khlight.otf") format("opentype");
+      font-display: swap;
+    }
+    @font-face {
+      font-family: "Northwell";
+      src: url("fonts/northwell.otf") format("opentype");
+      font-display: swap;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+ 
+    body {
+      background-color: #060a0f;
+      background-image: url("img/drlbg.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 32px 0;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    /* The track holds two identical groups so the loop is seamless */
+    .track {
+      display: flex;
+      width: max-content;
+      animation: scroll 30s linear infinite;
+    }
+
+    .group {
+      display: flex;
+      flex-shrink: 0;
+    }
+
+    header h1 {
+      margin: 0;
+      padding-right: 64px;
+      color: #be00ff;
+      font-size: 32px;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    .bold    { font-family: "F1 Bold", system-ui, sans-serif; }
+    .black   { font-family: "F1 Black", system-ui, sans-serif; position: relative; top: 2px; }
+    .wide    { font-family: "F1 Wide", system-ui, sans-serif; }
+    .regular { font-family: "F1 Regular", system-ui, sans-serif; }
+    .khregular { font-family: "KH Regular", system-ui, sans-serif; position: relative; top: 4px; }
+    .khbold { font-family: "KH Bold", system-ui, sans-serif; position: relative; top: 4px; }
+    .khlight { font-family: "KH Light", system-ui, sans-serif; position: relative; top: 4px; }
+    .northwell { font-family: "Northwell", system-ui, sans-serif; }
+
+
+    .nav {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      margin: 20px 0 0 48px;
+    }
+
+    .nav-link {
+      display: inline-block;
+      color: #be00ff;
+      font-family: "KH Light", system-ui, sans-serif;
+      font-size: 26px;
+      text-decoration: none;
+    }
+
+    /* fades to 50% while the text below is showing */
+    .nav-link[aria-expanded="true"] {
+      opacity: 0.5;
+    }
+
+    /* BACK fades to 50% while the cursor is on it */
+    #backLink:hover {
+      opacity: 0.5;
+    }
+
+    .nav-link:hover {
+      font-family: "KH Bold", system-ui, sans-serif;
+    }
+
+    .info {
+      display: none;
+      max-width: 460px;
+      color: #be00ff;
+      font-family: "F1 Regular", system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .info.open {
+      display: block;
+    }
+
+    .info a {
+      color: #be00ff;
+      word-break: break-all;
+    }
+
+    /* image bar: fixed-size tiles so the loop width is known without waiting for loading */
+    .images {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      padding-bottom: 40px;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .tile {
+      display: block;
+      flex-shrink: 0;
+      margin: 0 32px 0 0;
+    }
+
+    /* fixed height, natural width: the whole image shows, nothing is cropped */
+    .tile img {
+      display: block;
+      height: 216px;
+      width: auto;
+      border: none;
+      outline: none;
+      border-radius: 0;
+      background: none;
+    }
+
+    /* file name under the bottom-left corner of each image */
+    .tile figcaption {
+      margin-top: 10px;
+      text-align: left;
+      color: #be00ff;
+      font-family: "KH Regular", system-ui, sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    .tile img {
+      cursor: zoom-in;
+    }
+
+    /* full-screen media viewer */
+    .viewer {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.92);
+      cursor: zoom-out;
+    }
+
+    .viewer.open {
+      display: flex;
+    }
+
+    .viewer figure {
+      margin: 0;
+      max-width: 92vw;
+      cursor: default;
+    }
+
+    .viewer img {
+      display: block;
+      max-width: 92vw;
+      max-height: calc(100vh - 110px);
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .viewer figcaption {
+      margin-top: 12px;
+      text-align: left;
+      color: #be00ff;
+      font-family: "KH Regular", system-ui, sans-serif;
+      font-size: 14px;
+      letter-spacing: 0.02em;
+    }
+
+    .viewer button {
+      position: absolute;
+      background: none;
+      border: none;
+      color: #be00ff;
+      font-family: "KH Light", system-ui, sans-serif;
+      cursor: pointer;
+      opacity: 0.6;
+    }
+
+    .viewer button:hover {
+      opacity: 1;
+    }
+
+    .viewer .close { top: 20px; right: 28px; font-size: 40px; line-height: 1; }
+    .viewer .prev, .viewer .next { top: 50%; transform: translateY(-50%); font-size: 64px; padding: 0 20px; }
+    .viewer .prev { left: 8px; }
+    .viewer .next { right: 8px; }
+
+    @keyframes scroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .track { animation: none; }
+    }
+ 
+    main {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e8eaed;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="track" id="track">
+      <div class="group" id="groupA"></div>
+      <div class="group" id="groupB" aria-hidden="true"></div>
+    </div>
+    <nav class="nav">
+      <a class="nav-link" id="backLink" href="index.html">BACK</a>
+      <a class="nav-link" id="drlLink" href="#" aria-expanded="false" aria-controls="drlInfo">DRAGON RACING LEAGUE</a>
+      <div class="info" id="drlInfo">
+        I've been making graphics for this league since dec. 2025, including calendars and many other things. I also had the pleasure of redesigning DRL's identity recently. Come join us: <a href="https://discord.gg/cVg63UkrWs" target="_blank" rel="noopener noreferrer">discord.gg/cVg63UkrWs</a>
+      </div>
+    </nav>
+  </header>
+
+    <div class="images">
+      <div class="track" id="imgTrack">
+        <div class="group" id="imgA"></div>
+        <div class="group" id="imgB" aria-hidden="true"></div>
+      </div>
+    </div>
+
+    <div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="Image viewer">
+      <button class="close" id="viewerClose" aria-label="Close">&times;</button>
+      <button class="prev" id="viewerPrev" aria-label="Previous image">&#8249;</button>
+      <figure id="viewerFigure">
+        <img id="viewerImg" alt="">
+        <figcaption id="viewerCaption"></figcaption>
+      </figure>
+      <button class="next" id="viewerNext" aria-label="Next image">&#8250;</button>
+    </div>
+
+  <main>
+    <!-- Your content goes here -->
+  </main>
+
+  <script>
+    const FONTS = ["bold", "black", "wide", "regular", "khregular", "khbold", "khlight", "northwell"];
+    const SPEED = 140;
+    const track = document.getElementById("track");
+    const groupA = document.getElementById("groupA");
+    const groupB = document.getElementById("groupB");
+
+    function shuffle(arr) {
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    // Shuffled "decks" so every font shows up evenly, never the same font twice in a row
+    function nextDeck(prev) {
+      let deck;
+      do { deck = shuffle(FONTS.slice()); } while (deck[0] === prev);
+      return deck;
+    }
+
+    function build() {
+      groupA.innerHTML = "";
+      groupB.innerHTML = "";
+      const seq = [];
+      do {
+        seq.push(...nextDeck(seq[seq.length - 1]));
+        // the first and last must differ too, so the loop seam looks right
+        if (seq[0] === seq[seq.length - 1]) seq.push(...nextDeck(seq[seq.length - 1]));
+        groupA.innerHTML = seq.map(f => `<h1 class="${f}">DRL</h1>`).join("");
+      } while (groupA.scrollWidth < window.innerWidth * 1.2);
+
+      // second copy is identical so the scroll loops with no gap
+      groupB.innerHTML = groupA.innerHTML;
+
+      // fixed scroll speed in pixels per second (same pace as index.html on a 1920px-wide screen)
+      track.style.animationDuration = (groupA.scrollWidth / SPEED) + "s";
+    }
+
+    build();
+    // rebuild once fonts have loaded so the width is measured correctly
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(build);
+
+    // clicking the link opens / closes the info box
+    const drlLink = document.getElementById("drlLink");
+    const drlInfo = document.getElementById("drlInfo");
+    drlLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      const open = drlInfo.classList.toggle("open");
+      drlLink.setAttribute("aria-expanded", String(open));
+    });
+    // image bar: images come from the img/drl folder
+    const IMG_DIR = "img/drl/";
+    const IMG_EXT = /\.(png|jpe?g|gif|webp|avif|svg)$/i;
+    // fallback list, used when the server can't list the folder (browsers can't read folders on their own)
+    let IMAGES = [
+      IMG_DIR + "LOGO.png",
+      IMG_DIR + "CALENDAR.png",
+      IMG_DIR + "CUSTOM-MADE DRL FONT.png",
+      IMG_DIR + "WINNER.png",
+      IMG_DIR + "BREAKING.png",
+      IMG_DIR + "ATTENDANCE.png"
+    ];
+
+    // try to read the folder listing automatically (works on servers with directory listing on)
+    async function loadImageList() {
+      try {
+        const res = await fetch(IMG_DIR);
+        if (!res.ok) return;
+        const doc = new DOMParser().parseFromString(await res.text(), "text/html");
+        const found = [...doc.querySelectorAll("a[href]")]
+          .map(a => decodeURIComponent(a.getAttribute("href").split("?")[0]).split("/").pop())
+          .filter(name => IMG_EXT.test(name))
+          .sort((x, y) => x.localeCompare(y, undefined, { numeric: true }));
+        if (found.length) IMAGES = found.map(name => IMG_DIR + name);
+      } catch (e) { /* keep the fallback list */ }
+    }
+
+    const IMG_SPEED = 100; // image bar speed in pixels per second (a bit slower than the top bar)
+    const imgTrack = document.getElementById("imgTrack");
+    const imgA = document.getElementById("imgA");
+    const imgB = document.getElementById("imgB");
+
+    function imagesLoaded(root) {
+      return Promise.all([...root.querySelectorAll("img")].map(img =>
+        img.complete ? Promise.resolve() : new Promise(r => { img.onload = img.onerror = r; })
+      ));
+    }
+
+    async function buildImages() {
+      const one = IMAGES.map((src, i) => {
+        // caption = file name without folder or extension, e.g. "img/drl/CALENDAR.png" -> "CALENDAR"
+        const name = src.split("/").pop().replace(/\.[^.]+$/, "");
+        return `<figure class="tile" data-index="${i}"><img src="${src}" alt=""><figcaption>${name}</figcaption></figure>`;
+      }).join("");
+
+      // measure one full set of images (widths are only known once they have loaded)
+      imgA.innerHTML = one;
+      await imagesLoaded(imgA);
+      const oneWidth = imgA.scrollWidth || 1;
+
+      // repeat the set until it is wider than the screen, then clone it so the loop is seamless
+      const copies = Math.max(1, Math.ceil((window.innerWidth * 1.2) / oneWidth));
+      imgA.innerHTML = one.repeat(copies);
+      await imagesLoaded(imgA);
+      imgB.innerHTML = imgA.innerHTML;
+
+      imgTrack.style.animationDuration = (imgA.scrollWidth / IMG_SPEED) + "s";
+    }
+    loadImageList().then(buildImages);
+    // click an image to open it full-screen
+    const viewer = document.getElementById("viewer");
+    const viewerImg = document.getElementById("viewerImg");
+    const viewerCaption = document.getElementById("viewerCaption");
+    let current = 0;
+
+    function show(i) {
+      current = (i + IMAGES.length) % IMAGES.length;
+      const src = IMAGES[current];
+      viewerImg.src = src;
+      viewerCaption.textContent = src.split("/").pop().replace(/\.[^.]+$/, "");
+    }
+    function openViewer(i) {
+      show(i);
+      viewer.classList.add("open");
+      document.body.classList.add("viewing");
+    }
+    function closeViewer() {
+      viewer.classList.remove("open");
+      document.body.classList.remove("viewing");
+    }
+
+    document.querySelector(".images").addEventListener("click", (e) => {
+      const tile = e.target.closest(".tile");
+      if (tile) openViewer(Number(tile.dataset.index));
+    });
+    // clicking the dark area (not the image or arrows) closes it
+    viewer.addEventListener("click", (e) => {
+      if (e.target === viewer || e.target.id === "viewerClose") closeViewer();
+    });
+    document.getElementById("viewerPrev").addEventListener("click", () => show(current - 1));
+    document.getElementById("viewerNext").addEventListener("click", () => show(current + 1));
+    document.addEventListener("keydown", (e) => {
+      if (!viewer.classList.contains("open")) return;
+      if (e.key === "Escape") closeViewer();
+      if (e.key === "ArrowLeft") show(current - 1);
+      if (e.key === "ArrowRight") show(current + 1);
+    });
+  </script>
+</body>
+</html>

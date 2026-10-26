@@ -143,6 +143,17 @@
       font-family: "KH Bold", system-ui, sans-serif;
     }
 
+    /* phones: slightly smaller links, nudged a few pixels toward the top-left corner */
+    @media (max-width: 600px) {
+      .nav {
+        margin: 10px 0 0 38px;
+      }
+
+      .nav-link {
+        font-size: 22px;
+      }
+    }
+
     @keyframes scroll {
       from { transform: translateX(0); }
       to   { transform: translateX(-50%); }
@@ -174,7 +185,6 @@
       <div class="sub" id="workMenu">
         <a class="nav-link" href="drl.html">DRAGON RACING LEAGUE</a>
         <a class="nav-link" href="f1ss.html">F1 SILLY SERIES</a>
-        <a class="nav-link" href="#">&lt; INSERT YOUR LEAGUE HERE &gt;</a>
       </div>
     </nav>
   </header>

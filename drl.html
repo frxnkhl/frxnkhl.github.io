@@ -108,7 +108,7 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 12px;
+      gap: 6px;
       margin: 20px 0 0 48px;
     }
 
@@ -196,6 +196,15 @@
     }
 
     /* full-screen media viewer */
+    /* hint above the image bar */
+    .hint {
+      margin: 0 0 10px 48px;
+      color: #be00ff;
+      font-family: "KH Regular", system-ui, sans-serif;
+      font-size: 17px;
+      letter-spacing: 0.02em;
+    }
+
     .viewer {
       position: fixed;
       inset: 0;
@@ -203,7 +212,11 @@
       display: none;
       align-items: center;
       justify-content: center;
-      background: rgba(0, 0, 0, 0.92);
+      /* room kept free on each side so the image never touches the arrows */
+      --arrow-space: 120px;
+      padding: 0 var(--arrow-space);
+      box-sizing: border-box;
+      background: rgba(0, 0, 0, 0.5);
       cursor: zoom-out;
     }
 
@@ -213,13 +226,13 @@
 
     .viewer figure {
       margin: 0;
-      max-width: 92vw;
+      max-width: 100%;
       cursor: default;
     }
 
     .viewer img {
       display: block;
-      max-width: 92vw;
+      max-width: calc(100vw - 2 * var(--arrow-space));
       max-height: calc(100vh - 110px);
       width: auto;
       height: auto;
@@ -254,6 +267,49 @@
     .viewer .prev { left: 8px; }
     .viewer .next { right: 8px; }
 
+    /* phones: slightly smaller links, nudged a few pixels toward the top-left corner */
+    @media (max-width: 600px) {
+      .nav {
+        margin: 10px 0 0 38px;
+      }
+
+      .nav-link {
+        font-size: 22px;
+      }
+
+      /* smaller image bar */
+      .images {
+        padding-bottom: 24px;
+      }
+
+      .tile {
+        margin-right: 20px;
+      }
+
+      .tile img {
+        height: 130px;
+      }
+
+      .tile figcaption {
+        margin-top: 8px;
+        font-size: 12px;
+      }
+
+      .viewer {
+        --arrow-space: 64px;
+      }
+
+      .viewer .prev, .viewer .next {
+        font-size: 44px;
+        padding: 0 8px;
+      }
+
+      .hint {
+        margin: 0 0 8px 38px;
+        font-size: 14px;
+      }
+    }
+
     @keyframes scroll {
       from { transform: translateX(0); }
       to   { transform: translateX(-50%); }
@@ -284,12 +340,13 @@
       <a class="nav-link" id="backLink" href="index.html">BACK</a>
       <a class="nav-link" id="drlLink" href="#" aria-expanded="false" aria-controls="drlInfo">DRAGON RACING LEAGUE</a>
       <div class="info" id="drlInfo">
-        I've been making graphics for this league since dec. 2025, including calendars and many other things. I also had the pleasure of redesigning DRL's identity recently. Come join us: <a href="https://discord.gg/cVg63UkrWs" target="_blank" rel="noopener noreferrer">discord.gg/cVg63UkrWs</a>
+        I've been making graphics for this league since dec. 2025, including calendars and many other things. I also had the pleasure of redesigning DRL's identity recently. Join us: <a href="https://discord.gg/cVg63UkrWs" target="_blank" rel="noopener noreferrer">discord.gg/cVg63UkrWs</a>
       </div>
     </nav>
   </header>
 
     <div class="images">
+      <div class="hint">&darr; click to enlarge</div>
       <div class="track" id="imgTrack">
         <div class="group" id="imgA"></div>
         <div class="group" id="imgB" aria-hidden="true"></div>
